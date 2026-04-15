@@ -4,10 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AR Tuition Centre</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-
   <style>
     * {
       margin: 0;
@@ -29,8 +25,8 @@
       z-index: 1000;
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(12px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 14px 5%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 12px 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -39,101 +35,41 @@
     .nav-logo img {
       height: 55px;
       width: auto;
-      display: block;
+    }
+
+    /* Pill Style Nav Links */
+    .nav-pill {
+      padding: 10px 24px;
+      font-size: 0.97rem;
+      font-weight: 700;           /* Made Bold */
+      color: #475569;             /* Grey by default */
+      background: transparent;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;      /* No underline */
+    }
+
+    /* Hover Effect */
+    .nav-pill:hover {
+      background: white;
+      color: #0056a6;             /* Blue on hover */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transform: translateY(-1px);
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
-      position: relative;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #0f2b5e;
-      text-decoration: none;
-      font-weight: 600;
-      position: relative;
-      transition: color 0.3s ease, font-size 0.3s ease;
-    }
-
-    /* Home hover effect */
-    .nav-links > a:first-child:hover {
-      color: #007BFF; 
-      font-size: 1.1rem; 
-    }
-
-    .nav-links > a:first-child::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 100%;
-      height: 8px;
-      background: #ff9839; 
-      border-radius: 4px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.25);
-      opacity: 0;
-      transform: translateY(5px);
-      transition: all 0.3s ease;
-    }
-
-    .nav-links > a:first-child:hover::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Dropdown */
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-content {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      padding: 10px 0;
-      display: none;
-      flex-direction: column;
-      min-width: 180px;
-      z-index: 2000;
-    }
-
-    .dropdown-content a {
-      color: #66b2ff;
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .dropdown-content a:hover {
-      color: #ff9839;
-      font-size: 1.05rem;
-      text-decoration: none;
-      background-color: rgba(0,0,0,0.02);
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: flex;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 12px;
+      gap: 8px;
     }
 
     .nav-buttons button {
-      padding: 9px 20px;
+      padding: 10px 24px;
       border-radius: 50px;
       font-weight: 600;
       cursor: pointer;
-      font-size: 0.95rem;
+      transition: 0.3s;
     }
 
     .talk-btn {
@@ -189,13 +125,13 @@
       position: relative;
       z-index: 10;
       text-align: center;
-      max-width: 1000px;
+      max-width: 900px;
       width: 100%;
     }
 
     .main-heading {
-      font-size: 3.4rem;
-      line-height: 1.08;
+      font-size: 3.3rem;
+      line-height: 1.1;
       margin-bottom: 20px;
       font-weight: 700;
     }
@@ -203,7 +139,7 @@
     .highlight-box {
       display: inline-block;
       background: white;
-      padding: 12px 40px;
+      padding: 12px 45px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(255, 152, 57, 0.25);
       margin: 20px 0;
@@ -222,22 +158,16 @@
 
   <nav>
     <div class="nav-logo">
-      <img src="images/ar-tuition-logo.png" alt="AR Tuition Centre Logo">
+      <img src="ararar.png" alt="AR Tuition Centre Logo">
     </div>
+
     <div class="nav-links">
-      <a href="#">Home</a>
-      <div class="dropdown">
-        <a href="#">Classes</a>
-        <div class="dropdown-content">
-          <a href="#">Class 9th</a>
-          <a href="#">Class 10th</a>
-          <a href="#">Class 11th</a>
-          <a href="#">Class 12th</a>
-        </div>
-      </div>
-      <a href="#">Why Us</a>
-      <a href="#">Contact Us</a>
+      <a href="#" class="nav-pill">Home</a>
+      <a href="#" class="nav-pill">Courses</a>
+      <a href="#" class="nav-pill">Why Us</a>
+      <a href="#" class="nav-pill">Contact Us</a>
     </div>
+
     <div class="nav-buttons">
       <button class="talk-btn">Talk to Us</button>
       <button class="view-btn">View Courses</button>
@@ -249,13 +179,18 @@
     <div class="dots"></div>
 
     <div class="content">
-      <h1 class="main-heading">Level-Up Your Academic Career with</h1>
+      <h1 class="main-heading">
+        Level-Up Your Academic Career with
+      </h1>
+      
       <div class="highlight-box">
         <div class="highlight-text">AR TUITION CENTRE</div>
       </div>
-      <p style="font-size: 1.2rem; opacity: 0.9; margin-top: 15px; line-height: 1.5;">
+
+      <p style="font-size: 1.25rem; opacity: 0.9; margin-top: 15px;">
         Expert coaching for Class 8th to 12th | CBSE & State Board
       </p>
+
       <button style="background: #ff9839; color: white; padding: 16px 40px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 35px;">
         Browse Courses
       </button>
