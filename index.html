@@ -37,31 +37,67 @@
       width: auto;
     }
 
-    /* Pill Style Nav Links */
+    /* Nav Pill Style */
     .nav-pill {
       padding: 10px 24px;
       font-size: 0.97rem;
-      font-weight: 700;           /* Made Bold */
-      color: #475569;             /* Grey by default */
+      font-weight: 700;
+      color: #475569;
       background: transparent;
       border-radius: 9999px;
       transition: all 0.3s ease;
       cursor: pointer;
       white-space: nowrap;
-      text-decoration: none;      /* No underline */
+      text-decoration: none;
     }
 
-    /* Hover Effect */
     .nav-pill:hover {
       background: white;
-      color: #0056a6;             /* Blue on hover */
+      color: #0056a6;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
       transform: translateY(-1px);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      padding: 12px 0;
+      min-width: 180px;
+      z-index: 2000;
+      margin-top: 8px;
+    }
+
+    .dropdown-content a {
+      color: #475569;
+      padding: 12px 24px;
+      display: block;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-content a:hover {
+      color: #ff9839;
+      background: rgba(255, 152, 57, 0.08);
+      transform: scale(1.05);
+      padding-left: 30px;
     }
 
     .nav-links {
       display: flex;
       gap: 8px;
+      align-items: center;
     }
 
     .nav-buttons button {
@@ -163,7 +199,18 @@
 
     <div class="nav-links">
       <a href="#" class="nav-pill">Home</a>
-      <a href="#" class="nav-pill">Courses</a>
+      
+      <!-- Click to Open Dropdown -->
+      <div class="dropdown" id="classes-dropdown">
+        <a href="#" class="nav-pill" onclick="toggleDropdown(event)">Classes</a>
+        <div class="dropdown-content" id="dropdown-menu">
+          <a href="#">Class 9th</a>
+          <a href="#">Class 10th</a>
+          <a href="#">Class 11th</a>
+          <a href="#">Class 12th</a>
+        </div>
+      </div>
+
       <a href="#" class="nav-pill">Why Us</a>
       <a href="#" class="nav-pill">Contact Us</a>
     </div>
@@ -196,6 +243,21 @@
       </button>
     </div>
   </div>
+
+  <script>
+    function toggleDropdown(e) {
+      e.preventDefault();
+      const menu = document.getElementById('dropdown-menu');
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!document.getElementById('classes-dropdown').contains(e.target)) {
+        document.getElementById('dropdown-menu').style.display = 'none';
+      }
+    });
+  </script>
 
 </body>
 </html>
