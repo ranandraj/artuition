@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Tuition Centre</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
         }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             color: white;
-            min-height: 100vh;
+            min-height: 200vh;
             overflow-x: hidden;
         }
 
-        /* Navigation styles (unchanged) */
+        /* Navigation */
         nav {
             position: sticky;
             top: 0;
@@ -31,9 +31,8 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .nav-logo img { height: 55px; width: auto; }
-
+        
         .nav-pill {
             padding: 10px 24px;
             font-size: 0.97rem;
@@ -42,18 +41,17 @@
             background: transparent;
             border-radius: 9999px;
             transition: all 0.3s ease;
-            cursor: pointer;
-            white-space: nowrap;
             text-decoration: none;
         }
-
         .nav-pill:hover {
             background: white;
             color: #0056a6;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-            transform: translateY(-1px);
         }
 
+        .nav-links { display: flex; gap: 8px; align-items: center; }
+
+        /* Dropdown */
         .dropdown { position: relative; }
         .dropdown-content {
             display: none;
@@ -64,23 +62,20 @@
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             padding: 12px 0;
-            min-width: 180px;
+            min-width: 200px;
             z-index: 2000;
-            margin-top: 8px;
         }
         .dropdown-content a {
             color: #475569;
             padding: 12px 24px;
             display: block;
-            font-weight: 600;
             text-decoration: none;
+            font-weight: 500;
         }
         .dropdown-content a:hover {
             color: #ff9839;
             background: rgba(255,152,57,0.08);
         }
-
-        .nav-links { display: flex; gap: 8px; align-items: center; }
 
         .nav-buttons button {
             padding: 10px 24px;
@@ -89,8 +84,16 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .talk-btn { background: transparent; border: 2px solid #0f2b5e; color: #0f2b5e; }
-        .view-btn { background: #ff9839; color: white; border: none; }
+        .talk-btn {
+            background: transparent;
+            border: 2px solid #0f2b5e;
+            color: #0f2b5e;
+        }
+        .view-btn {
+            background: #ff9839;
+            color: white;
+            border: none;
+        }
 
         /* Hero Section */
         .hero-bg {
@@ -108,8 +111,8 @@
             inset: 0;
             background: linear-gradient(to bottom right, #1e5aa8, #103466, #0f172a);
         }
-        .glow-right, .dots { position: absolute; inset: 0; pointer-events: none; }
         .glow-right {
+            position: absolute;
             bottom: -20%; right: -20%;
             width: 600px; height: 600px;
             background: rgba(255,152,57,0.12);
@@ -117,6 +120,8 @@
             filter: blur(100px);
         }
         .dots {
+            position: absolute;
+            inset: 0;
             background-image: radial-gradient(#ffffff 1px, transparent 1px);
             background-size: 40px 40px;
             opacity: 0.12;
@@ -126,7 +131,6 @@
             z-index: 10;
             text-align: center;
             max-width: 900px;
-            width: 100%;
         }
         .main-heading {
             font-size: 3.3rem;
@@ -139,36 +143,32 @@
             background: white;
             padding: 12px 45px;
             border-radius: 12px;
-            box-shadow: 0 0 15px rgba(255,152,57,0.25);
             margin: 20px 0;
         }
         .highlight-text {
-            font-family: 'Arial Black', sans-serif;
             font-size: 2.2rem;
             color: #ff9839;
-            letter-spacing: 2px;
             font-weight: 900;
         }
 
         /* Classes Section */
         #classes-section {
-            padding: 100px 5%;
+            padding: 140px 5% 100px;
             background: #f8fafc;
             color: #1e2937;
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 60px; 
         }
-        .section-header span {
-            color: #ff9839;
-            font-weight: 700;
-            font-size: 1.1rem;
+        .section-header span { 
+            color: #ff9839; 
+            font-weight: 700; 
         }
 
         .classes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
             max-width: 1300px;
             margin: 0 auto;
@@ -180,10 +180,9 @@
             padding: 32px 28px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.4s ease;
-            text-align: left;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
 
         .class-card:hover {
@@ -191,7 +190,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        /* Tight Highlight Labels */
         .class-label {
             display: inline-block;
             padding: 6px 18px;
@@ -202,21 +200,6 @@
             width: fit-content;
         }
 
-        .class-card h3 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: #1e2937;
-            margin-bottom: 10px;
-        }
-
-        .class-card p {
-            color: #64748b;
-            font-size: 1.05rem;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
         .enquire-btn {
             background: #ff9839;
             color: white;
@@ -224,33 +207,43 @@
             padding: 12px 28px;
             border-radius: 50px;
             font-weight: 600;
-            cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
             margin-top: auto;
+            cursor: pointer;
         }
-
         .enquire-btn:hover {
             background: #e67e00;
             transform: translateY(-2px);
         }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .classes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .classes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation and Hero same as before -->
     <nav>
         <div class="nav-logo">
             <img src="ararar.png" alt="AR Tuition Centre Logo">
         </div>
         <div class="nav-links">
-            <a href="#" class="nav-pill">Home</a>
+            <a href="#home" onclick="scrollToHome()" class="nav-pill">Home</a>
+           
             <div class="dropdown" id="classes-dropdown">
                 <a href="#" class="nav-pill" onclick="toggleDropdown(event)">Classes</a>
                 <div class="dropdown-content" id="dropdown-menu">
-                    <a href="#classes-section">Class 9th</a>
-                    <a href="#classes-section">Class 10th</a>
-                    <a href="#classes-section">Class 11th</a>
-                    <a href="#classes-section">Class 12th</a>
+                    <a href="#classes-section" onclick="scrollToClasses()">Class 9th</a>
+                    <a href="#classes-section" onclick="scrollToClasses()">Class 10th</a>
+                    <a href="#classes-section" onclick="scrollToClasses()">Class 11th</a>
+                    <a href="#classes-section" onclick="scrollToClasses()">Class 12th</a>
                 </div>
             </div>
             <a href="#" class="nav-pill">Why Us</a>
@@ -258,12 +251,12 @@
         </div>
         <div class="nav-buttons">
             <button class="talk-btn">Talk to Us</button>
-            <button class="view-btn" onclick="document.getElementById('classes-section').scrollIntoView({ behavior: 'smooth' })">View Classes</button>
+            <button class="view-btn" onclick="scrollToClasses()">View Classes</button>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <div class="hero-bg">
+    <!-- Hero Section -->
+    <div class="hero-bg" id="home">
         <div class="glow-right"></div>
         <div class="dots"></div>
         <div class="content">
@@ -272,10 +265,8 @@
                 <div class="highlight-text">AR TUITION CENTRE</div>
             </div>
             <p style="font-size: 1.25rem; opacity: 0.9; margin-top: 15px;">Expert coaching for Class 9th to 12th</p>
-            <button onclick="document.getElementById('classes-section').scrollIntoView({ behavior: 'smooth' })" 
-                    style="background: #ff9839; color: white; padding: 16px 40px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 35px;">
-                View Classes
-            </button>
+            
+            <!-- View Classes button removed from here -->
         </div>
     </div>
 
@@ -285,6 +276,7 @@
             <span>OUR PROGRAMS</span>
             <h2 style="font-size: 2.8rem; margin-top: 10px; color: #1e2937;">In-Demand Academic Streams</h2>
         </div>
+        
         <div class="classes-grid">
             <div class="class-card">
                 <span class="class-label" style="background:#dcfce7; color:#166534;">Step Up</span>
@@ -319,6 +311,17 @@
             const menu = document.getElementById('dropdown-menu');
             menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
         }
+
+        function scrollToHome() {
+            document.getElementById('home').scrollIntoView({ behavior: "smooth" });
+            document.getElementById('dropdown-menu').style.display = 'none';
+        }
+
+        function scrollToClasses() {
+            document.getElementById('classes-section').scrollIntoView({ behavior: "smooth" });
+            document.getElementById('dropdown-menu').style.display = 'none';
+        }
+
         document.addEventListener('click', function(e) {
             if (!document.getElementById('classes-dropdown').contains(e.target)) {
                 document.getElementById('dropdown-menu').style.display = 'none';
