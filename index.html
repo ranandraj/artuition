@@ -41,46 +41,46 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); 
     }
     .nav-links { display: flex; gap: 8px; align-items: center; }
-    
+
     /* Dropdown */
     .dropdown { position: relative; }
     .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: white; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 12px 0; min-width: 200px; z-index: 2000; }
     .dropdown-content a { color: #475569; padding: 12px 24px; display: block; text-decoration: none; font-weight: 500; }
     .dropdown-content a:hover { color: #ff9839; background: rgba(255,152,57,0.08); }
-    
-    /* Updated Buttons */
+
+    /* Buttons - Only Float Effect */
     .nav-buttons button { 
       padding: 10px 24px; 
-      border-radius: 12px;        /* Changed to rounded rectangle */
+      border-radius: 12px; 
       font-weight: 600; 
       cursor: pointer; 
       transition: all 0.3s ease; 
     }
-    
+
     .talk-btn { 
       background: transparent; 
-      border: 2px solid #0f2b5e; 
-      color: #0f2b5e; 
+      border: 2px solid #1e5aa8; 
+      color: #1e5aa8; 
     }
-    .talk-btn:hover {
-      background: #eff6ff;           /* Lightest blue fill */
-      border-color: #1e5aa8;         /* Deep blue outline */
-      color: #1e5aa8;                /* Deep blue text */
-      transform: scale(1.05);        /* Slight increase in size */
+    .talk-btn:hover { 
+      background: #eff6ff; 
+      border-color: #1e5aa8; 
+      color: #1e5aa8; 
+      transform: translateY(-3px);   /* Only gentle float */
     }
-    
+
     .view-btn { 
-      background: #ff9839; 
+      background: linear-gradient(to right, #ff9839, #ff891c); 
       color: white; 
       border: none; 
+      box-shadow: 0 4px 15px rgba(255, 152, 57, 0.3);
     }
-    .view-btn:hover {
-      background: #ff9839;
-      transform: scale(1.05);        /* Increase size on hover */
-      box-shadow: 0 8px 20px rgba(255, 152, 57, 0.3);
+    .view-btn:hover { 
+      transform: translateY(-3px);   /* Only gentle float */
+      box-shadow: 0 10px 25px rgba(255, 152, 57, 0.4); 
     }
-    
-    /* Hero Section */
+
+    /* Hero & Other Styles */
     .hero-bg { position: relative; min-height: 100vh; background: #0f172a; display: flex; align-items: center; justify-content: center; padding: 20px 15px; }
     .hero-bg::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom right, #1e5aa8, #103466, #0f172a); }
     .glow-right { position: absolute; bottom: -20%; right: -20%; width: 600px; height: 600px; background: rgba(255,152,57,0.12); border-radius: 50%; filter: blur(100px); }
@@ -89,8 +89,7 @@
     .main-heading { font-size: 3.3rem; line-height: 1.1; margin-bottom: 20px; font-weight: 700; }
     .highlight-box { display: inline-block; background: white; padding: 12px 45px; border-radius: 12px; margin: 20px 0; }
     .highlight-text { font-size: 2.2rem; color: #ff9839; font-weight: 900; }
-    
-    /* Classes Section */
+
     #classes-section { padding: 140px 5% 100px; background: #f8fafc; color: #1e2937; }
     .section-header { text-align: center; margin-bottom: 60px; }
     .section-header span { color: #ff9839; font-weight: 700; }
@@ -100,8 +99,7 @@
     .class-label { display: inline-block; padding: 6px 18px; border-radius: 9999px; font-size: 0.85rem; font-weight: 700; margin-bottom: 15px; width: fit-content; }
     .enquire-btn { background: #ff9839; color: white; border: none; padding: 12px 28px; border-radius: 50px; font-weight: 600; width: 100%; margin-top: auto; cursor: pointer; }
     .enquire-btn:hover { background: #e67e00; transform: translateY(-2px); }
-    
-    /* Responsive */
+
     @media (max-width: 1200px) { .classes-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) { .classes-grid { grid-template-columns: 1fr; } }
   </style>
@@ -192,27 +190,22 @@
           <h4 class="text-lg font-bold text-[#1e5aa8] mb-2">Interactive</h4>
           <p class="text-sm text-slate-600">No boring lectures — every class is live and engaging. Doubts are solved instantly with active participation.</p>
         </div>
-
         <div class="p-6 rounded-2xl bg-slate-50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <h4 class="text-lg font-bold text-[#1e5aa8] mb-2">Concept-First</h4>
           <p class="text-sm text-slate-600">We focus on building strong fundamentals in Maths, Science, and more. Clear concepts create lasting confidence.</p>
         </div>
-
         <div class="p-6 rounded-2xl bg-slate-50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <h4 class="text-lg font-bold text-[#1e5aa8] mb-2">Assignments</h4>
           <p class="text-sm text-slate-600">Practice sheets and homework sharpen understanding. Regular assignments ensure steady progress and accountability.</p>
         </div>
-
         <div class="p-6 rounded-2xl bg-slate-50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <h4 class="text-lg font-bold text-[#1e5aa8] mb-2">Small Batches</h4>
           <p class="text-sm text-slate-600">Compact groups mean more personal attention. Peer learning keeps students motivated and focused.</p>
         </div>
-
         <div class="p-6 rounded-2xl bg-slate-50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <h4 class="text-lg font-bold text-[#1e5aa8] mb-2">Regular Assessments</h4>
           <p class="text-sm text-slate-600">Weekly and monthly tests track performance. Consistent evaluation builds exam readiness and confidence.</p>
         </div>
-
         <div class="p-6 rounded-2xl bg-slate-50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <h4 class="text-lg font-bold text-[#1e5aa8] mb-2">Personalized Support</h4>
           <p class="text-sm text-slate-600">Mentors provide tailored guidance for every student. Doubts are cleared with individual feedback and care.</p>
