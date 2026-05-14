@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AR Tuition Centre</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; color: white; min-height: 200vh; overflow-x: hidden; }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; } 
+    html { scroll-behavior: smooth; } 
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: white; min-height: 200vh; overflow-x: hidden; } 
+
     /* Navigation */
     nav { 
       position: sticky; 
@@ -23,8 +22,10 @@
       display: flex; 
       align-items: center; 
       justify-content: space-between; 
-    }
-    .nav-logo img { height: 55px; width: auto; }
+    } 
+
+    .nav-logo img { height: 55px; width: auto; } 
+
     .nav-pill { 
       padding: 10px 24px; 
       font-size: 0.97rem; 
@@ -34,53 +35,136 @@
       border-radius: 9999px; 
       transition: all 0.3s ease; 
       text-decoration: none; 
-    }
+    } 
+
     .nav-pill:hover { 
       background: white; 
       color: #0056a6; 
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); 
-    }
-    .nav-links { display: flex; gap: 8px; align-items: center; }
+    } 
+
+    .nav-links { display: flex; gap: 8px; align-items: center; } 
 
     /* Dropdown */
-    .dropdown { position: relative; }
-    .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: white; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 12px 0; min-width: 200px; z-index: 2000; }
-    .dropdown-content a { color: #475569; padding: 12px 24px; display: block; text-decoration: none; font-weight: 500; }
-    .dropdown-content a:hover { color: #ff9839; background: rgba(255,152,57,0.08); }
+    .dropdown { position: relative; } 
+    .dropdown-content { 
+      display: none; 
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      background: white; 
+      border-radius: 12px; 
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+      padding: 12px 0; 
+      min-width: 200px; 
+      z-index: 2000; 
+    } 
+    .dropdown-content a { 
+      color: #475569; 
+      padding: 12px 24px; 
+      display: block; 
+      text-decoration: none; 
+      font-weight: 500; 
+    } 
+    .dropdown-content a:hover { 
+      color: #ff9839; 
+      background: rgba(255,152,57,0.08); 
+    } 
 
-    /* Buttons - Only Float Effect */
+    /* Buttons */
     .nav-buttons button { 
       padding: 10px 24px; 
       border-radius: 12px; 
       font-weight: 600; 
       cursor: pointer; 
       transition: all 0.3s ease; 
-    }
-
-    .talk-btn { 
-      background: transparent; 
-      border: 2px solid #1e5aa8; 
-      color: #1e5aa8; 
-    }
-    .talk-btn:hover { 
-      background: #eff6ff; 
-      border-color: #1e5aa8; 
-      color: #1e5aa8; 
-      transform: translateY(-3px);   /* Only gentle float */
-    }
-
+    } 
+    .talk-btn { background: transparent; border: 2px solid #1e5aa8; color: #1e5aa8; } 
+    .talk-btn:hover { background: #eff6ff; border-color: #1e5aa8; color: #1e5aa8; transform: translateY(-3px); } 
     .view-btn { 
       background: linear-gradient(to right, #ff9839, #ff891c); 
       color: white; 
       border: none; 
-      box-shadow: 0 4px 15px rgba(255, 152, 57, 0.3);
-    }
-    .view-btn:hover { 
-      transform: translateY(-3px);   /* Only gentle float */
-      box-shadow: 0 10px 25px rgba(255, 152, 57, 0.4); 
+      box-shadow: 0 4px 15px rgba(255, 152, 57, 0.3); 
+    } 
+    .view-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 152, 57, 0.4); } 
+
+    /* ==================== SMALL BUBBLE MENU ==================== */
+    #mobile-menu-btn {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+      color: #475569;
     }
 
-    /* Hero & Other Styles */
+    #mobile-bubble {
+      display: none;
+      position: fixed;
+      top: 85px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      padding: 15px 10px 20px;
+      width: 200px;
+      z-index: 10000;
+      border: 1px solid #e2e8f0;
+    }
+
+    .bubble-title {
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #1e5aa8;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .bubble-link {
+      display: block;
+      padding: 13px 16px;
+      font-weight: 600;
+      color: #334155;
+      border-radius: 10px;
+      margin: 4px 6px;
+      text-align: center;
+      transition: all 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .bubble-link:hover {
+      background: #f0f9ff;
+      color: #1e5aa8;
+    }
+
+    .close-bubble {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 26px;
+      color: #64748b;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      #mobile-menu-btn { display: block; }
+      .nav-buttons .talk-btn,
+      .nav-buttons .view-btn { display: none; }
+
+      /* Mobile Hero Text */
+      .main-heading { font-size: 2.45rem !important; font-weight: 700 !important; }
+      .highlight-text { font-size: 1.85rem !important; font-weight: 800 !important; }
+    }
+
+    /* Desktop Hero - Unchanged */
     .hero-bg { position: relative; min-height: 100vh; background: #0f172a; display: flex; align-items: center; justify-content: center; padding: 20px 15px; }
     .hero-bg::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom right, #1e5aa8, #103466, #0f172a); }
     .glow-right { position: absolute; bottom: -20%; right: -20%; width: 600px; height: 600px; background: rgba(255,152,57,0.12); border-radius: 50%; filter: blur(100px); }
@@ -122,13 +206,26 @@
         </div>
       </div>
       <a href="#why" class="nav-pill">Why Us</a>
-      <a href="#" class="nav-pill">Contact Us</a>
+      <a href="#contact" class="nav-pill">Contact Us</a>
     </div>
     <div class="nav-buttons">
       <button class="talk-btn">Talk to Us</button>
       <button class="view-btn" onclick="scrollToClasses()">View Classes</button>
+      <button id="mobile-menu-btn" onclick="toggleBubble()">☰</button>
     </div>
   </nav>
+
+  <!-- Smaller Bubble Menu with MENU Title -->
+  <div id="mobile-bubble">
+    <button onclick="toggleBubble()" class="close-bubble">✕</button>
+    <div class="bubble-title">MENU</div>
+    <div class="pt-2 flex flex-col">
+      <a href="#home" onclick="goToHome()" class="bubble-link">Home</a>
+      <a href="#classes-section" onclick="goToClasses()" class="bubble-link">Classes</a>
+      <a href="#why" onclick="toggleBubble()" class="bubble-link">Why Us</a>
+      <a href="#contact" onclick="toggleBubble()" class="bubble-link">Contact Us</a>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <div class="hero-bg" id="home">
@@ -184,7 +281,6 @@
         <h2 class="text-3xl font-bold text-[#0f172a]">Why AR Tuition Centre?</h2>
         <p class="text-slate-600 mt-4">We design every class to boost learning speed and make a real difference in your academic journey.</p>
       </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="p-6 rounded-2xl bg-slate-50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <h4 class="text-lg font-bold text-[#1e5aa8] mb-2">Interactive</h4>
@@ -215,23 +311,48 @@
   </section>
 
   <script>
-    function toggleDropdown(e) {
-      e.preventDefault();
-      const menu = document.getElementById('dropdown-menu');
-      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    function toggleDropdown(e) { 
+      e.preventDefault(); 
+      const menu = document.getElementById('dropdown-menu'); 
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block'; 
+    } 
+
+    function scrollToHome() { 
+      document.getElementById('home').scrollIntoView({ behavior: "smooth" }); 
+      document.getElementById('dropdown-menu').style.display = 'none'; 
+    } 
+
+    function scrollToClasses() { 
+      document.getElementById('classes-section').scrollIntoView({ behavior: "smooth" }); 
+      document.getElementById('dropdown-menu').style.display = 'none'; 
+    } 
+
+    function toggleBubble() {
+      const bubble = document.getElementById('mobile-bubble');
+      bubble.style.display = (bubble.style.display === 'block') ? 'none' : 'block';
     }
-    function scrollToHome() {
+
+    function goToHome() {
       document.getElementById('home').scrollIntoView({ behavior: "smooth" });
-      document.getElementById('dropdown-menu').style.display = 'none';
+      toggleBubble();
     }
-    function scrollToClasses() {
+
+    function goToClasses() {
       document.getElementById('classes-section').scrollIntoView({ behavior: "smooth" });
-      document.getElementById('dropdown-menu').style.display = 'none';
+      toggleBubble();
     }
+
     document.addEventListener('click', function(e) {
-      if (!document.getElementById('classes-dropdown').contains(e.target)) {
-        document.getElementById('dropdown-menu').style.display = 'none';
+      const bubble = document.getElementById('mobile-bubble');
+      if (!bubble.contains(e.target) && !e.target.closest('#mobile-menu-btn')) {
+        bubble.style.display = 'none';
       }
+    });
+
+    document.addEventListener('click', function(e) { 
+      if (!document.getElementById('classes-dropdown').contains(e.target)) { 
+        document.getElementById('dropdown-menu').style.display = 'none'; 
+      } 
     });
   </script>
 </body>
